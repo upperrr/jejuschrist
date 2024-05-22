@@ -2,11 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="so.jejuschrist.mapper.UserMapper">
     <insert id="insertUser" parameterType="so.jejuschrist.domain.User" useGeneratedKeys="true" keyProperty="user_code">
-        INSERT INTO users (id, username, password, email, created_at, updated_at, last_login, status)
+        INSERT INTO /*+ 회원 추가 insertUser: */
+            users (id, username, password, email, created_at, updated_at, last_login, status)
         VALUES (#{id}, #{username}, #{password}, #{email}, #{createdAt}, #{updatedAt}, #{lastLogin}, #{status})
     </insert>
 
-    <select id="findById" parameterType="long" resultType="so.jejuschrist.domain.User">
-        SELECT * FROM users WHERE user_code = #{user_code}
+    <select id="findById" parameterType="String" resultType="so.jejuschrist.domain.User">
+        SELECT * /*+ 회원 찾기 findById: */
+        FROM users
+        WHERE id = #{id}
     </select>
+
+    <delete id="deleteById" parameterType="String">
+        DELETE /*+ 회원 삭제 deleteById: */
+            FROM users
+            WHERE id = #{id}
+    </delete>
 </mapper>
