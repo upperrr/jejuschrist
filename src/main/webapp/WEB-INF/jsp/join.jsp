@@ -12,10 +12,18 @@
 </head>
 <body>
 <h1>회원가입</h1>
-<form id="joinForm" method="post" action="/register">
+<form id="registerForm" method="post" action="/register">
     <div>
-        <label for="username">아이디:</label>
+        <label for="id">아이디:</label>
+        <input type="text" id="id" name="id">
+    </div>
+    <div>
+        <label for="username">이름:</label>
         <input type="text" id="username" name="username">
+    </div>
+    <div>
+        <label for="email">이메일:</label>
+        <input type="text" id="email" name="email">
     </div>
     <div>
         <label for="password">비밀번호:</label>
@@ -29,5 +37,33 @@
         <button type="submit">가입하기</button>
     </div>
 </form>
+<script>
+    $(document).ready(function(){
+        $("#registerForm").submit(function(event){
+            event.preventDefault();
+
+            var userData = {
+                id: $("#id").val(),
+                username: $("#username").val(),
+                password: $("#password").val(),
+                email: $("#email").val(),
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "/user/register",
+                contentType: "application/json",
+                data: JSON.stringify(userData),
+                dataType: "json",
+                success: function(response){
+                    // 회원가입 성공 처리
+                },
+                error: function(error){
+                    // 오류 처리
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>

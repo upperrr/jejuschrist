@@ -31,10 +31,10 @@ public class DbConnectionTest {
         user.setUsername("testUser");
         user.setPassword("password");
         user.setEmail("test@example.com");
-        user.setCreatedAt(java.time.LocalDateTime.now());
-        user.setUpdatedAt(java.time.LocalDateTime.now());
-        user.setLastLogin(java.time.LocalDateTime.now());
-        user.setStatus("ACTIVE");
+//        user.setCreatedAt(java.time.LocalDateTime.now());
+//        user.setUpdatedAt(java.time.LocalDateTime.now());
+//        user.setLastLogin(java.time.LocalDateTime.now());
+//        user.setStatus("ACTIVE");
 
         logger.debug("Inserting user: {}", user);
         userMapper.insertUser(user);
