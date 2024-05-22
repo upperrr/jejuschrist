@@ -45,21 +45,3 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
-
-//Spring Boot 애플리케이션을 WebToB와 JEUS 환경에서 사용하려면 일반적으로 war 파일로 패키징하는 것이 필요합니다.
-//이는 WebToB가 웹 서버로, JEUS가 WAS로 동작할 때, JEUS가 war 파일을 배포하여 실행하는 구조이기 때문입니다.
-//bootWar {
-//    mainClassName = 'so.jejuschrist.JejuschristApplication'
-//}
-
-bootJar {
-    enabled = true
-}
-
-bootWar {
-    enabled = false
-}
-
-springBoot {
-    mainClass = 'so.jejuschrist.JejuschristApplication'
-}
