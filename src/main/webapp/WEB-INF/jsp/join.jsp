@@ -57,10 +57,19 @@
                 dataType: "json",
                 success: function(response){
                     // 회원가입 성공 처리
-                },
-                error: function(error){
-                    // 오류 처리
+                    // alert("환영합니다");
+                    alert(response.message);
+                    window.location.href = "/";
+                },error: function(jqXHR, textStatus, errorThrown){
+                    console.log("오류 상태: ", textStatus);
+                    console.log("오류 메시지: ", errorThrown);
+                    console.log("응답 상태 코드: ", jqXHR.status);
+                    console.log("응답 텍스트: ", jqXHR.responseText);
+                    alert("에러 발생");
+                    // window.location.href = "/join";
                 }
+
+
             });
         });
     });

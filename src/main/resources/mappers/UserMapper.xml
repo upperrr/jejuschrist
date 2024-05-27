@@ -4,7 +4,16 @@
     <insert id="insertUser" parameterType="so.jejuschrist.domain.User" useGeneratedKeys="true" keyProperty="user_code">
         INSERT INTO /*+ 회원 추가 insertUser: */
             users (id, username, password, email, created_at, updated_at, last_login, status)
-        VALUES (#{id}, #{username}, #{password}, #{email}, #{createdAt}, #{updatedAt}, #{lastLogin}, #{status})
+        VALUES (
+                #{id}
+               , #{username}
+               , #{password}
+               , #{email}
+               , CURRENT_TIMESTAMP
+               , CURRENT_TIMESTAMP
+               , CURRENT_TIMESTAMP
+               , 'ACTIVE'
+               )
     </insert>
 
     <select id="findById" parameterType="String" resultType="so.jejuschrist.domain.User">
